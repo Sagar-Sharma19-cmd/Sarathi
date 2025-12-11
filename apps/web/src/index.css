@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    @apply bg-gray-50 text-gray-900 antialiased;
+  }
+}
+
+/* Creative animations and utilities */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes floatSlow {
+  0% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-8px) translateX(6px); }
+  100% { transform: translateY(0) translateX(0); }
+}
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(6px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@layer utilities {
+  .animate-gradient-slow { animation: gradientShift 12s ease infinite; }
+  .animate-float-slow { animation: floatSlow 10s ease-in-out infinite; }
+  .animate-fade-in { animation: fadeInUp .4s ease-out both; }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-lg font-medium transition-colors shadow-sm ring-1 ring-transparent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 disabled:opacity-50 disabled:pointer-events-none;
+  }
+
+  .btn-primary {
+    @apply bg-primary-600 text-white hover:bg-primary-700 active:bg-primary-800;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-100 text-gray-900 hover:bg-gray-200 active:bg-gray-300;
+  }
+
+  .btn-lg {
+    @apply px-6 py-4 text-lg;
+  }
+
+  .card {
+    @apply bg-white rounded-xl shadow-lg p-6 border border-gray-100;
+  }
+
+  .input {
+    @apply w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent disabled:bg-gray-100 disabled:text-gray-500;
+  }
+
+  .tile {
+    @apply bg-white rounded-xl shadow-md p-6 flex flex-col items-center justify-center space-y-3 hover:shadow-lg hover:-translate-y-0.5 transition-all cursor-pointer active:scale-95 transform border border-gray-100 hover:ring-2 hover:ring-primary-200/60;
+  }
+
+  .tile-number {
+    @apply inline-flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-primary-500 to-orange-400 text-white text-xl font-semibold shadow;
+  }
+
+  .tile-label {
+    @apply text-lg font-medium text-gray-700 text-center;
+  }
+
+  .badge {
+    @apply inline-flex items-center justify-center min-w-[24px] h-6 px-2 text-xs font-bold text-white bg-red-500 rounded-full;
+  }
+
+  .brand-wordmark {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-orange-500;
+  }
+}
+

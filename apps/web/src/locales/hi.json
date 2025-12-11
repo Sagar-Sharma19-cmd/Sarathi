@@ -1,0 +1,147 @@
+{
+  "app": {
+    "name": "सारथी",
+    "tagline": "आपका वित्तीय साथी"
+  },
+  "auth": {
+    "login": "लॉगिन",
+    "phone": "फ़ोन नंबर",
+    "phonePlaceholder": "+919876543210",
+    "sendOTP": "ओटीपी भेजें",
+    "verifyOTP": "ओटीपी सत्यापित करें",
+    "otpPlaceholder": "6 अंकों का ओटीपी दर्ज करें",
+    "selectLanguage": "भाषा चुनें",
+    "english": "English",
+    "hindi": "हिंदी",
+    "otpSent": "ओटीपी सफलतापूर्वक भेजा गया",
+    "invalidPhone": "अमान्य फ़ोन नंबर",
+    "invalidOTP": "अमान्य ओटीपी"
+  },
+  "home": {
+    "welcome": "स्वागत है, {{name}}",
+    "sarathiId": "सारथी आईडी: {{id}}",
+    "balance": "उपलब्ध राशि",
+    "tiles": {
+      "sendMoney": "पैसे भेजें",
+      "creditScore": "क्रेडिट स्कोर",
+      "loan": "लोन",
+      "transactions": "लेन-देन",
+      "changeState": "राज्य बदलें",
+      "help": "मदद"
+    },
+    "transactions": {
+      "title": "हाल के लेन-देन",
+      "viewAll": "सभी देखें",
+      "empty": "अभी कोई हाल का लेन-देन नहीं",
+      "counterparty": "प्राप्तकर्ता: {{value}}",
+      "unknown": "लेन-देन",
+      "risk": {
+        "low": "कम जोखिम",
+        "medium": "मध्यम जोखिम",
+        "high": "उच्च जोखिम"
+      }
+    }
+  },
+  "sendMoney": {
+    "title": "पैसे भेजें",
+    "amount": "राशि",
+    "amountPlaceholder": "राशि दर्ज करें",
+    "counterparty": "प्राप्तकर्ता फ़ोन",
+    "counterpartyPlaceholder": "+919876543210",
+    "send": "पैसे भेजें",
+    "success": "पैसे सफलतापूर्वक भेजे गए!",
+    "receipt": "लेन-देन रसीद",
+    "transactionId": "लेन-देन आईडी",
+    "viewTransactions": "सभी लेन-देन देखें"
+  },
+  "score": {
+    "title": "क्रेडिट स्कोर",
+    "yourScore": "आपका स्कोर",
+    "band": "बैंड {{band}}",
+    "reasons": "स्कोर कारक",
+    "history": "स्कोर इतिहास",
+    "goodHistory": "अच्छा भेजने का इतिहास",
+    "stability": "स्थिर आय पैटर्न",
+    "counterparty": "नियमित प्राप्तकर्ता",
+    "firstLoan": "पहला लोन चुकाया गया",
+    "defaultRisk": "पिछली चूक से स्कोर प्रभावित",
+    "timelyRepay": "समय पर चुकौती का लाभ",
+    "balanceStability": "निरंतर बैलेंस बनाए रखा",
+    "lowRiskActivity": "नियमित कम-जोखिम लेन-देन",
+    "delayedRepay": "विलंबित चुकौती दर्ज",
+    "overdraftRisk": "ओवरड्राफ्ट प्रयास से स्कोर कम हुआ",
+    "highRiskActivity": "उच्च-जोखिम लेन-देन दिखे"
+  },
+  "loan": {
+    "title": "लोन",
+    "requestLoan": "लोन का अनुरोध करें",
+    "amount": "लोन राशि",
+    "amountPlaceholder": "राशि दर्ज करें (अधिकतम ₹5,000)",
+    "checkEligibility": "पात्रता जांचें",
+    "approved": "लोन स्वीकृत!",
+    "rejected": "लोन स्वीकृत नहीं",
+    "principal": "मूल राशि",
+    "interest": "ब्याज दर",
+    "term": "अवधि",
+    "days": "दिन",
+    "totalRepayment": "कुल चुकौती",
+    "dueDate": "नियत तारीख",
+    "acceptOffer": "ऑफर स्वीकार करें",
+    "activeLoan": "सक्रिय लोन",
+    "repay": "चुकाएं",
+    "repaymentAmount": "चुकौती राशि",
+    "makeRepayment": "चुकौती करें",
+    "remaining": "शेष",
+    "repaymentSuccess": "चुकौती सफल!"
+  },
+  "transactions": {
+    "title": "लेन-देन",
+    "empty": "अभी तक कोई लेन-देन नहीं",
+    "type": {
+      "remit": "पैसे भेजे गए",
+      "repay": "लोन चुकौती",
+      "loan_disbursal": "लोन वितरित",
+      "safesend_escrow": "सेफसेंड एस्क्रो",
+      "safesend_release": "सेफसेंड जारी",
+      "safesend_refund": "सेफसेंड रिफंड"
+    },
+    "status": {
+      "success": "सफल",
+      "failed": "विफल",
+      "pending": "लंबित"
+    }
+  },
+  "settings": {
+    "title": "सेटिंग्स",
+    "language": "भाषा",
+    "state": "वर्तमान राज्य",
+    "consent": "सहमति रसीदें",
+    "logout": "लॉग आउट",
+    "selectState": "अपना राज्य चुनें"
+  },
+  "admin": {
+    "title": "एडमिन पैनल",
+    "seedData": "डेटा सीड करें",
+    "months": "महीनों की संख्या",
+    "amount": "मासिक राशि",
+    "seed": "लेन-देन सीड करें",
+    "seedSuccess": "डेटा सफलतापूर्वक सीड किया गया!",
+    "poorNetwork": "खराब नेटवर्क मोड",
+    "enable": "सक्षम करें",
+    "disable": "अक्षम करें"
+  },
+  "common": {
+    "loading": "लोड हो रहा है...",
+    "error": "एक त्रुटि हुई",
+    "retry": "पुन: प्रयास करें",
+    "cancel": "रद्द करें",
+    "confirm": "पुष्टि करें",
+    "back": "वापस",
+    "next": "अगला",
+    "submit": "जमा करें",
+    "save": "सहेजें",
+    "close": "बंद करें",
+    "rupees": "₹"
+  }
+}
+

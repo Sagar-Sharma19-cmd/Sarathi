@@ -1,0 +1,90 @@
+╔══════════════════════════════════════════════════════════════════════╗
+║                    SARATHI ADMIN PANEL - QUICK START                 ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+🎯 FIXED: Admin panel authentication issues are now resolved!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  QUICK START (3 STEPS)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1️⃣  LOGIN (if you haven't already)
+   → Open: http://localhost:5173
+   → Enter phone: +919876543210
+   → Enter OTP from console
+
+2️⃣  MAKE YOURSELF ADMIN
+   → Open new terminal
+   → cd apps/api
+   → pnpm make-admin +919876543210
+
+3️⃣  LOGOUT & LOGIN AGAIN
+   → Logout from web app
+   → Login again
+   → ✅ You now have admin access!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  ADMIN COMMANDS (While App is Running)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Grant Admin:      cd apps/api && pnpm make-admin +919876543210
+Remove Admin:     cd apps/api && pnpm remove-admin +919876543210
+List Admins:      cd apps/api && pnpm list-admins
+Test Everything:  ./test-merchant-creation.sh
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  WHAT WAS FIXED
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ Expired tokens now auto-logout (no more "Invalid token" errors)
+✅ Better error messages (tells you exactly what's wrong)
+✅ Easy admin management (CLI scripts)
+✅ Interactive test script (verify everything works)
+✅ Comprehensive docs (ADMIN_GUIDE.md)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  TROUBLESHOOTING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+❌ "Invalid or expired token"
+   → Logout and login again
+
+❌ "You need admin privileges"
+   → cd apps/api && pnpm make-admin +919876543210
+   → Logout and login again
+
+❌ "User not found"
+   → Login at least once first
+   → Then run make-admin
+
+❌ Stuck/Broken UI
+   → Press F12 → Console → Type: localStorage.clear()
+   → Refresh page
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  ADMIN FEATURES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+• Seed transaction data (test credit scores)
+• Create merchants (SafeSend)
+• Verify merchants (approve them)
+• Review proof submissions (approve/reject)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  DOCUMENTATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📖 ADMIN_GUIDE.md         → Full admin panel guide
+📖 FIXES_SUMMARY.md       → What was fixed (technical)
+📖 ADMIN_QUICK_START.txt  → This file
+📖 README.md              → Complete project docs
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+💡 TIP: After making yourself admin, always logout and login again
+        to get a fresh token with admin privileges!
+
+🎉 Ready to use the admin panel? Follow the 3 steps above!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+

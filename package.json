@@ -1,0 +1,36 @@
+{
+  "name": "sarathi-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sarathi - Cross-state financial identity and micro-loan MVP for Indian migrant workers",
+  "scripts": {
+    "dev:api": "pnpm --filter @sarathi/api dev",
+    "dev:web": "pnpm --filter @sarathi/web dev",
+    "dev:all": "concurrently \"pnpm dev:api\" \"pnpm dev:web\"",
+    "build:api": "pnpm --filter @sarathi/api build",
+    "build:web": "pnpm --filter @sarathi/web build",
+    "build": "pnpm build:api && pnpm build:web",
+    "test": "pnpm --filter @sarathi/api test && pnpm --filter @sarathi/web test && pnpm --filter @sarathi/shared test",
+    "lint": "pnpm --filter \"./apps/**\" --filter \"./packages/**\" lint",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "seed": "pnpm --filter @sarathi/api seed",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "concurrently": "^8.2.2",
+    "eslint": "^8.56.0",
+    "husky": "^8.0.3",
+    "prettier": "^3.2.5",
+    "tsx": "^4.20.6",
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "dependencies": {
+    "zod": "^3.25.76"
+  }
+}

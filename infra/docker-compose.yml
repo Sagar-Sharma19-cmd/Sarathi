@@ -1,0 +1,61 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo:7
+    container_name: sarathi-mongo
+    restart: unless-stopped
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo_data:/data/db
+    environment:
+      MONGO_INITDB_DATABASE: sarathi
+
+  redis:
+    image: redis:7-alpine
+    container_name: sarathi-redis
+    restart: unless-stopped
+    ports:
+      - '6379:6379'
+    volumes:
+      - redis_data:/data
+
+  api:
+    build:
+      context: ..
+      dockerfile: apps/api/Dockerfile
+    container_name: sarathi-api
+    restart: unless-stopped
+    ports:
+      - '3000:3000'
+    environment:
+      NODE_ENV: ${NODE_ENV:-development}
+      PORT: 3000
+      MONGO_URI: mongodb://mongo:27017/sarathi
+      JWT_SECRET: ${JWT_SECRET:-dev-secret-change-in-production}
+      REDIS_URL: redis://redis:6379
+      SMS_PROVIDER: ${SMS_PROVIDER:-DEV_SMS_CONSOLE}
+      SMS_API_KEY: ${SMS_API_KEY:-}
+      SMS_API_SECRET: ${SMS_API_SECRET:-}
+      SMS_SENDER_ID: ${SMS_SENDER_ID:-SARATHI}
+      WEB_ORIGIN: ${WEB_ORIGIN:-http://localhost:5173}
+    depends_on:
+      - mongo
+      - redis
+
+  web:
+    build:
+      context: ..
+      dockerfile: apps/web/Dockerfile
+    container_name: sarathi-web
+    restart: unless-stopped
+    ports:
+      - '5173:80'
+    depends_on:
+      - api
+
+volumes:
+  mongo_data:
+  redis_data:
+

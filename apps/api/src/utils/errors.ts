@@ -1,0 +1,28 @@
+export class AppError extends Error {
+  constructor(
+    public code: string,
+    message: string,
+    public statusCode: number = 400
+  ) {
+    super(message);
+    this.name = 'AppError';
+  }
+}
+
+export const ErrorCodes = {
+  INVALID_INPUT: 'INVALID_INPUT',
+  UNAUTHORIZED: 'UNAUTHORIZED',
+  NOT_FOUND: 'NOT_FOUND',
+  INSUFFICIENT_FUNDS: 'INSUFFICIENT_FUNDS',
+  RATE_LIMIT_EXCEEDED: 'RATE_LIMIT_EXCEEDED',
+  OTP_SEND_LIMIT: 'OTP_SEND_LIMIT',
+  OTP_VERIFY_LIMIT: 'OTP_VERIFY_LIMIT',
+  OTP_COOLDOWN: 'OTP_COOLDOWN',
+  INVALID_OTP: 'INVALID_OTP',
+  LOAN_REJECTED: 'LOAN_REJECTED',
+  ACTIVE_LOAN_EXISTS: 'ACTIVE_LOAN_EXISTS',
+  LOAN_NOT_FOUND: 'LOAN_NOT_FOUND',
+  INSUFFICIENT_REPAYMENT: 'INSUFFICIENT_REPAYMENT',
+  INTERNAL_ERROR: 'INTERNAL_ERROR',
+} as const;
+

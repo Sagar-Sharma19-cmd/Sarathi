@@ -1,0 +1,147 @@
+{
+  "app": {
+    "name": "Sarathi",
+    "tagline": "Your Financial Companion"
+  },
+  "auth": {
+    "login": "Login",
+    "phone": "Phone Number",
+    "phonePlaceholder": "+919876543210",
+    "sendOTP": "Send OTP",
+    "verifyOTP": "Verify OTP",
+    "otpPlaceholder": "Enter 6-digit OTP",
+    "selectLanguage": "Select Language",
+    "english": "English",
+    "hindi": "हिंदी",
+    "otpSent": "OTP sent successfully",
+    "invalidPhone": "Invalid phone number",
+    "invalidOTP": "Invalid OTP"
+  },
+  "home": {
+    "welcome": "Welcome, {{name}}",
+    "sarathiId": "Sarathi ID: {{id}}",
+    "balance": "Available Balance",
+    "tiles": {
+      "sendMoney": "Send Money",
+      "creditScore": "Credit Score",
+      "loan": "Loan",
+      "transactions": "Transactions",
+      "changeState": "Change State",
+      "help": "Help"
+    },
+    "transactions": {
+      "title": "Recent Transactions",
+      "viewAll": "View All",
+      "empty": "No recent transactions",
+      "counterparty": "Counterparty: {{value}}",
+      "unknown": "Transaction",
+      "risk": {
+        "low": "Low risk",
+        "medium": "Medium risk",
+        "high": "High risk"
+      }
+    }
+  },
+  "sendMoney": {
+    "title": "Send Money",
+    "amount": "Amount",
+    "amountPlaceholder": "Enter amount",
+    "counterparty": "Recipient Phone",
+    "counterpartyPlaceholder": "+919876543210",
+    "send": "Send Money",
+    "success": "Money sent successfully!",
+    "receipt": "Transaction Receipt",
+    "transactionId": "Transaction ID",
+    "viewTransactions": "View All Transactions"
+  },
+  "score": {
+    "title": "Credit Score",
+    "yourScore": "Your Score",
+    "band": "Band {{band}}",
+    "reasons": "Score Factors",
+    "history": "Score History",
+    "goodHistory": "Good remittance history",
+    "stability": "Stable income pattern",
+    "counterparty": "Regular recipient",
+    "firstLoan": "First loan repaid",
+    "defaultRisk": "Past default affects score",
+    "timelyRepay": "Timely repayments rewarded",
+    "balanceStability": "Consistent balance maintained",
+    "lowRiskActivity": "Frequent low-risk transactions",
+    "delayedRepay": "Delayed repayments detected",
+    "overdraftRisk": "Overdraft attempts reduce score",
+    "highRiskActivity": "High-risk transfers observed"
+  },
+  "loan": {
+    "title": "Loan",
+    "requestLoan": "Request Loan",
+    "amount": "Loan Amount",
+    "amountPlaceholder": "Enter amount (max ₹5,000)",
+    "checkEligibility": "Check Eligibility",
+    "approved": "Loan Approved!",
+    "rejected": "Loan Not Approved",
+    "principal": "Principal",
+    "interest": "Interest Rate",
+    "term": "Term",
+    "days": "days",
+    "totalRepayment": "Total Repayment",
+    "dueDate": "Due Date",
+    "acceptOffer": "Accept Offer",
+    "activeLoan": "Active Loan",
+    "repay": "Repay",
+    "repaymentAmount": "Repayment Amount",
+    "makeRepayment": "Make Repayment",
+    "remaining": "Remaining",
+    "repaymentSuccess": "Repayment successful!"
+  },
+  "transactions": {
+    "title": "Transactions",
+    "empty": "No transactions yet",
+    "type": {
+      "remit": "Money Sent",
+      "repay": "Loan Repayment",
+      "loan_disbursal": "Loan Disbursed",
+      "safesend_escrow": "SafeSend Escrow",
+      "safesend_release": "SafeSend Released",
+      "safesend_refund": "SafeSend Refunded"
+    },
+    "status": {
+      "success": "Success",
+      "failed": "Failed",
+      "pending": "Pending"
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "state": "Current State",
+    "consent": "Consent Receipts",
+    "logout": "Logout",
+    "selectState": "Select your state"
+  },
+  "admin": {
+    "title": "Admin Panel",
+    "seedData": "Seed Data",
+    "months": "Number of Months",
+    "amount": "Monthly Amount",
+    "seed": "Seed Transactions",
+    "seedSuccess": "Data seeded successfully!",
+    "poorNetwork": "Poor Network Mode",
+    "enable": "Enable",
+    "disable": "Disable"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "retry": "Retry",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Submit",
+    "save": "Save",
+    "close": "Close",
+    "rupees": "₹"
+  }
+}
+
