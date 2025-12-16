@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useAuth } from '../contexts/AuthContext';
 
 interface LayoutProps {
   children: ReactNode;
@@ -19,6 +20,7 @@ export function Layout({
 }: LayoutProps) {
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const { logout } = useAuth();
 
   const hasBackground = Boolean(backgroundImageUrl);
   const overlayAlpha = Math.min(Math.max(backgroundOverlayOpacity, 0), 1);
@@ -41,16 +43,24 @@ export function Layout({
     <div className={containerClassName} style={containerStyle}>
       {!hasBackground && null}
       <header className={`${headerClassName} sticky top-0 z-20 backdrop-blur bg-opacity-95 bg-sky-200/95`}>
-        <div className="max-w-4xl mx-auto px-4 py-4 flex items-center">
-          {showBack && (
-            <button
-              onClick={() => navigate(-1)}
-              className={`mr-3 p-2 rounded-lg transition-colors ${backButtonHoverClass}`}
-            >
-              ← {t('common.back')}
-            </button>
-          )}
-          <h1 className="text-xl font-semibold tracking-tight brand-wordmark">{title || t('app.name')}</h1>
+        <div className="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between gap-3">
+          <div className="flex items-center">
+            {showBack && (
+              <button
+                onClick={() => navigate(-1)}
+                className={`mr-3 p-2 rounded-lg transition-colors ${backButtonHoverClass}`}
+              >
+                ← {t('common.back')}
+              </button>
+            )}
+            <h1 className="text-xl font-semibold tracking-tight brand-wordmark">{title || t('app.name')}</h1>
+          </div>
+          <button
+            onClick={logout}
+            className="px-3 py-2 text-sm font-semibold text-white bg-primary-600 rounded-lg shadow hover:bg-primary-700 transition-colors"
+          >
+            {t('LOGOUT') || 'Logout'}
+          </button>
         </div>
       </header>
       <main className={`${mainClassName} animate-fade-in`}>{children}</main>

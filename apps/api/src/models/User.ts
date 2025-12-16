@@ -31,7 +31,7 @@ const overdraftHistorySchema = new Schema<UserOverdraftEvent>(
   { _id: false }
 );
 
-const userSchema = new Schema<UserDocument>(
+const userSchema = new Schema(
   {
     phoneE164: { type: String, required: true, unique: true, index: true },
     sarathiId: { type: String, required: true, unique: true, index: true },
@@ -55,7 +55,7 @@ const userSchema = new Schema<UserDocument>(
   {
     timestamps: true,
   }
-);
+) as Schema<UserDocument>;
 
 export const UserModel = mongoose.model<UserDocument>('User', userSchema);
 
