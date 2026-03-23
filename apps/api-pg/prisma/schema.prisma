@@ -1,0 +1,94 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}
+
+enum UserStatus {
+  ACTIVE
+  BLOCKED
+}
+
+model User {
+  id        String      @id @default(uuid())
+  name      String?
+  phone     String      @unique
+  email     String?     @unique
+  role      UserRole    @default(USER)
+  status    UserStatus  @default(ACTIVE)
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+
+  loginLogs LoginLog[]
+  otpLogs   OtpLog[]
+  adminLogs AdminLog[]  @relation("AdminActor")
+  sessions  Session[]
+
+  @@index([phone])
+  @@index([status, createdAt])
+}
+
+model OtpLog {
+  id         String   @id @default(uuid())
+  userId     String?
+  user       User?    @relation(fields: [userId], references: [id])
+  phone      String
+  otpCode    String
+  purpose    String
+  createdAt  DateTime @default(now())
+  expiresAt  DateTime
+  verifiedAt DateTime?
+  isValid    Boolean  @default(true)
+  ipAddress  String?
+  userAgent  String?
+
+  @@index([phone, createdAt])
+  @@index([createdAt])
+}
+
+model LoginLog {
+  id            String   @id @default(uuid())
+  userId        String?
+  user          User?    @relation(fields: [userId], references: [id])
+  phone         String
+  success       Boolean
+  failureReason String?
+  ipAddress     String?
+  userAgent     String?
+  createdAt     DateTime @default(now())
+
+  @@index([userId, createdAt])
+}
+
+model AdminLog {
+  id          String   @id @default(uuid())
+  adminId     String
+  admin       User     @relation("AdminActor", fields: [adminId], references: [id])
+  action      String
+  targetUserId String?
+  metadata    Json?
+  createdAt   DateTime @default(now())
+}
+
+model Session {
+  id           String   @id @default(uuid())
+  userId       String
+  user         User     @relation(fields: [userId], references: [id])
+  refreshToken String   @unique
+  ipAddress    String?
+  userAgent    String?
+  createdAt    DateTime @default(now())
+  expiresAt    DateTime
+  revokedAt    DateTime?
+
+  @@index([userId])
+}
+
