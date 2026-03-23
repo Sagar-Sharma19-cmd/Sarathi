@@ -161,7 +161,7 @@ export async function recomputeAndSaveScore(userId: string): Promise<ScoringResu
   logger.info({ userId }, 'Recomputing score');
 
   const signals = await calculateScoringSignals(userId);
-  const result = computeScore(signals);
+  const result = computeScore(signals) as ScoringResult;
 
   const user = await UserModel.findById(userId);
   if (!user) {

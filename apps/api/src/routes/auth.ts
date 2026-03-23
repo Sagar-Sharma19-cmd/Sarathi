@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import { Router, type Router as ExpressRouter } from 'express';
 import { v4 as uuidv4 } from 'uuid';
 import { SendOTPSchema, VerifyOTPSchema, RegisterSchema, LoginPasswordSchema } from '@sarathi/shared';
 import { validateBody } from '../middleware/validateRequest.js';
@@ -10,7 +10,7 @@ import { getLatestScore, recomputeAndSaveScore } from '../services/scoring.js';
 import { logger } from '../config/logger.js';
 import bcrypt from 'bcryptjs';
 
-const router = Router();
+const router: ExpressRouter = Router();
 
 router.post('/otp/send', validateBody(SendOTPSchema), async (req, res, next) => {
   try {
@@ -95,7 +95,7 @@ router.post('/otp/verify', validateBody(VerifyOTPSchema), async (req, res, next)
 // Registration: create user with phone + password
 router.post('/register', validateBody(RegisterSchema), async (req, res, next) => {
   try {
-    const { phoneE164, password } = req.body as { phoneE164: string; password: string };
+    const { phoneE164, password, name } = req.body as { phoneE164: string; password: string; name: string };
     const existing = await UserModel.findOne({ phoneE164 });
     if (existing) {
       return res.status(409).json({ error: { code: 'USER_EXISTS', message: 'User already registered' } });
@@ -106,6 +106,7 @@ router.post('/register', validateBody(RegisterSchema), async (req, res, next) =>
     const user = await UserModel.create({
       phoneE164,
       sarathiId,
+      name,
       passwordHash,
       preferredLang: 'en',
       stateCode: 'DL',

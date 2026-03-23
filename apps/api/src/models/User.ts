@@ -5,7 +5,9 @@ import type {
   UserOverdraftEvent,
 } from '@sarathi/shared';
 
-export interface UserDocument extends Omit<IUser, '_id'>, Document {}
+export interface UserDocument extends Omit<IUser, '_id'>, Document {
+  passwordHash?: string;
+}
 
 const transactionHistorySchema = new Schema<UserTransactionHistoryEntry>(
   {
@@ -35,6 +37,7 @@ const userSchema = new Schema(
   {
     phoneE164: { type: String, required: true, unique: true, index: true },
     sarathiId: { type: String, required: true, unique: true, index: true },
+    name: { type: String },
     passwordHash: { type: String },
     preferredLang: { type: String, enum: ['en', 'hi'], default: 'en' },
     stateCode: { type: String, required: true, length: 2 },

@@ -1,9 +1,9 @@
-import { Router } from 'express';
+import { Router, type Router as ExpressRouter } from 'express';
 import { authenticateUser, AuthRequest } from '../middleware/auth.js';
 import { getLatestScore } from '../services/scoring.js';
 import { ScoreModel } from '../models/Score.js';
 
-const router = Router();
+const router: ExpressRouter = Router();
 
 router.use(authenticateUser);
 

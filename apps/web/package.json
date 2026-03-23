@@ -14,7 +14,9 @@
   "dependencies": {
     "@sarathi/shared": "workspace:*",
     "@tanstack/react-query": "^5.20.5",
+    "framer-motion": "^12.35.2",
     "i18next": "^23.8.2",
+    "lucide-react": "^0.577.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.50.0",
@@ -35,4 +37,3 @@
     "vitest": "^1.2.2"
   }
 }
-

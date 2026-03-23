@@ -10,6 +10,7 @@ export default function AdminPage() {
   const [months, setMonths] = useState('6');
   const [amount, setAmount] = useState('2500');
   const [counterparty, setCounterparty] = useState('+919999999999');
+  const [usersPage] = useState(1);
 
   // Merchant form
   const [merchantName, setMerchantName] = useState('');
@@ -26,6 +27,11 @@ export default function AdminPage() {
   const { data: pendingProofsData } = useQuery({
     queryKey: ['pending-proofs'],
     queryFn: () => api.getPendingProofs(1, 10),
+  });
+
+  const { data: usersData } = useQuery({
+    queryKey: ['admin-users', usersPage],
+    queryFn: () => api.adminListUsers(usersPage, 20),
   });
 
   const seedMutation = useMutation({
@@ -276,6 +282,45 @@ export default function AdminPage() {
         ) : (
           <div className="text-center py-6 text-gray-500 border rounded bg-gray-50">
             <p className="text-sm">No merchants yet. Click "+ Add Merchant" to create one.</p>
+          </div>
+        )}
+      </div>
+
+      {/* User Accounts */}
+      <div className="card mb-4">
+        <div className="flex justify-between items-center mb-4">
+          <div>
+            <h2 className="text-xl font-bold">User Accounts</h2>
+            <p className="text-xs text-gray-600 mt-1">Recently created accounts</p>
+          </div>
+        </div>
+
+        {usersData?.users && usersData.users.length > 0 ? (
+          <div className="space-y-2">
+            {usersData.users.map(u => (
+              <div key={u.userId} className="flex justify-between items-center p-3 border rounded hover:bg-gray-50">
+                <div className="flex-1">
+                  <p className="font-medium">{u.phoneE164}</p>
+                  <p className="text-sm text-gray-600">
+                    {u.stateCode} • KYC: {u.kycStatus} • Balance: ₹{u.totalMoney} • Created:{' '}
+                    {new Date(u.createdAt).toLocaleString()}
+                  </p>
+                </div>
+                {u.isAdmin ? (
+                  <span className="px-3 py-1 bg-purple-100 text-purple-800 text-xs font-semibold rounded">
+                    Admin
+                  </span>
+                ) : (
+                  <span className="px-3 py-1 bg-gray-100 text-gray-800 text-xs font-semibold rounded">
+                    User
+                  </span>
+                )}
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-6 text-gray-500 border rounded bg-gray-50">
+            <p className="text-sm">No users found (or you don’t have admin access).</p>
           </div>
         )}
       </div>

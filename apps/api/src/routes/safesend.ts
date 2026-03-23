@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import { Router, type Router as ExpressRouter } from 'express';
 import { authenticateUser, requireAdmin, AuthRequest } from '../middleware/auth.js';
 import { validateBody, validateQuery } from '../middleware/validateRequest.js';
 import {
@@ -14,7 +14,7 @@ import { SafeSendEscrowModel } from '../models/SafeSendEscrow.js';
 import { SafeSendProofModel } from '../models/SafeSendProof.js';
 import { MerchantModel } from '../models/Merchant.js';
 
-const router = Router();
+const router: ExpressRouter = Router();
 
 // Get merchants
 router.get('/merchants', authenticateUser, async (req: AuthRequest, res, next) => {

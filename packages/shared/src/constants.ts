@@ -31,6 +31,7 @@ export const TRANSACTION_TYPE = {
   REMIT: 'remit',
   REPAY: 'repay',
   LOAN_DISBURSAL: 'loan_disbursal',
+  TOPUP: 'topup',
   SAFESEND_ESCROW: 'safesend_escrow',
   SAFESEND_RELEASE: 'safesend_release',
   SAFESEND_REFUND: 'safesend_refund',

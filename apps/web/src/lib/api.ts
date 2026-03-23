@@ -24,9 +24,9 @@ async function request<T>(
 ): Promise<T> {
   const token = localStorage.getItem('jwt');
 
-  const headers: HeadersInit = {
+  const headers: Record<string, string> = {
     'Content-Type': 'application/json',
-    ...options.headers,
+    ...(options.headers as Record<string, string> | undefined),
   };
 
   if (token) {
@@ -61,10 +61,10 @@ async function request<T>(
 
 export const api = {
   // Registration & Password login
-  register: (phoneE164: string, password: string) =>
+  register: (name: string, phoneE164: string, password: string) =>
     request('/auth/register', {
       method: 'POST',
-      body: JSON.stringify({ phoneE164, password }),
+      body: JSON.stringify({ name, phoneE164, password }),
     }),
 
   loginInitiate: (phoneE164: string, password: string) =>
@@ -120,6 +120,7 @@ export const api = {
         userId: string;
         phoneE164: string;
         sarathiId: string;
+        name?: string;
         preferredLang: string;
         stateCode: string;
         kycStatus: string;
@@ -307,6 +308,42 @@ export const api = {
       method: 'POST',
       body: JSON.stringify({ enabled }),
     }),
+
+  adminListUsers: (page: number = 1, limit: number = 20) =>
+    request<{
+      users: Array<{
+        userId: string;
+        phoneE164: string;
+        sarathiId: string;
+        preferredLang: string;
+        stateCode: string;
+        kycStatus: string;
+        isAdmin: boolean;
+        totalMoney: number;
+        createdAt: Date;
+      }>;
+      pagination: { page: number; limit: number; total: number; totalPages: number };
+    }>(`/admin/users?page=${page}&limit=${limit}`),
+
+  adminListPayments: (page: number = 1, limit: number = 20) =>
+    request<{
+      payments: Array<{
+        paymentId: string;
+        userId: string;
+        purpose: string;
+        amount: number;
+        currency: string;
+        status: string;
+        razorpayOrderId: string;
+        razorpayPaymentId?: string;
+        loanId?: string;
+        escrowId?: string;
+        walletTopupTransactionId?: string;
+        createdAt: Date;
+        paidAt?: Date;
+      }>;
+      pagination: { page: number; limit: number; total: number; totalPages: number };
+    }>(`/admin/payments?page=${page}&limit=${limit}`),
 
   // SafeSend
   getMerchants: (stateCode?: string, verified?: boolean) =>

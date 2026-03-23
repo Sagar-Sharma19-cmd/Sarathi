@@ -35,6 +35,7 @@ export interface User {
   _id: string;
   phoneE164: string;
   sarathiId: string;
+  name?: string;
   preferredLang: Language;
   stateCode: string;
   kycStatus: KycStatus;

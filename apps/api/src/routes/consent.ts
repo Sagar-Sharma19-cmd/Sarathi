@@ -1,11 +1,11 @@
-import { Router } from 'express';
+import { Router, type Router as ExpressRouter } from 'express';
 import { CreateConsentSchema, CONSENT_VALIDITY_DAYS } from '@sarathi/shared';
 import { authenticateUser, AuthRequest } from '../middleware/auth.js';
 import { validateBody } from '../middleware/validateRequest.js';
 import { ConsentModel } from '../models/Consent.js';
 import { signConsentToken } from '../utils/jwt.js';
 
-const router = Router();
+const router: ExpressRouter = Router();
 
 router.use(authenticateUser);
 

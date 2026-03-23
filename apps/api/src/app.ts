@@ -16,8 +16,9 @@ import loanRoutes from './routes/loan.js';
 import adminRoutes from './routes/admin.js';
 import safesendRoutes from './routes/safesend.js';
 import chatRoutes from './routes/chat.js';
+import paymentsRoutes from './routes/payments.js';
 
-export function createApp() {
+export function createApp(): express.Express {
   const app = express();
 
   // Middleware
@@ -27,6 +28,9 @@ export function createApp() {
       credentials: true,
     })
   );
+
+  // Razorpay webhook needs raw body for signature verification
+  app.use('/payments/webhook/razorpay', express.raw({ type: 'application/json' }));
 
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
@@ -54,6 +58,7 @@ export function createApp() {
   app.use('/transactions', transactionsRoutes);
   app.use('/score', scoreRoutes);
   app.use('/loan', loanRoutes);
+  app.use('/payments', paymentsRoutes);
   app.use('/admin', adminRoutes);
   app.use('/safesend', safesendRoutes);
   app.use('/chat', chatRoutes);

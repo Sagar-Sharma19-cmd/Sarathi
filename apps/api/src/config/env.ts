@@ -14,6 +14,9 @@ export const env = {
   SMS_SENDER_ID: process.env.SMS_SENDER_ID || 'SARATHI',
   WEB_ORIGIN: process.env.WEB_ORIGIN || 'http://localhost:5173',
   GEMINI_API_KEY: process.env.GEMINI_API_KEY || '',
+  RAZORPAY_KEY_ID: process.env.RAZORPAY_KEY_ID || '',
+  RAZORPAY_KEY_SECRET: process.env.RAZORPAY_KEY_SECRET || '',
+  RAZORPAY_WEBHOOK_SECRET: process.env.RAZORPAY_WEBHOOK_SECRET || '',
 } as const;
 
 export const isDevelopment = env.NODE_ENV === 'development';

@@ -1,10 +1,10 @@
-import { Router } from 'express';
+import { Router, type Router as ExpressRouter } from 'express';
 import { z } from 'zod';
 import { authenticateUser, AuthRequest } from '../middleware/auth.js';
 import { validateBody } from '../middleware/validateRequest.js';
 import { getChatResponse } from '../services/aiChat.js';
 
-const router = Router();
+const router: ExpressRouter = Router();
 
 const ChatSchema = z.object({
   message: z.string().min(1).max(500),

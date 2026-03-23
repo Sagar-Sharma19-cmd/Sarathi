@@ -13,6 +13,7 @@ export const VerifyOTPSchema = z.object({
 
 // Registration and password login
 export const RegisterSchema = z.object({
+  name: z.string().min(2).max(100),
   phoneE164: z.string().regex(/^\+91[6-9]\d{9}$/, 'Invalid Indian phone number'),
   password: z.string().min(8).max(64),
 });
@@ -104,6 +105,44 @@ export const RefundEscrowSchema = z.object({
   escrowId: z.string(),
 });
 
+// Payments schemas
+export const CreatePaymentOrderSchema = z
+  .object({
+    purpose: z.enum(['wallet_topup', 'loan_repay', 'safesend_deposit']),
+    amount: z.number().int().positive().max(50000, 'Amount cannot exceed ₹50,000'),
+    loanId: z.string().optional(),
+    merchantId: z.string().optional(),
+    goal: z.enum(['school_fees', 'groceries', 'rent', 'medical', 'utilities', 'other']).optional(),
+    lockReason: z.string().min(1).max(200).optional(),
+  })
+  .superRefine((val, ctx) => {
+    if (val.purpose === 'loan_repay' && !val.loanId) {
+      ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'loanId is required for loan_repay', path: ['loanId'] });
+    }
+    if (val.purpose === 'safesend_deposit') {
+      if (!val.merchantId) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: 'merchantId is required for safesend_deposit',
+          path: ['merchantId'],
+        });
+      }
+      if (!val.goal) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: 'goal is required for safesend_deposit',
+          path: ['goal'],
+        });
+      }
+    }
+  });
+
+export const VerifyRazorpayPaymentSchema = z.object({
+  razorpay_order_id: z.string(),
+  razorpay_payment_id: z.string(),
+  razorpay_signature: z.string(),
+});
+
 // Response type helpers
 export type SendOTPInput = z.infer<typeof SendOTPSchema>;
 export type VerifyOTPInput = z.infer<typeof VerifyOTPSchema>;
@@ -124,4 +163,6 @@ export type CreateSafeSendInput = z.infer<typeof CreateSafeSendSchema>;
 export type SubmitProofInput = z.infer<typeof SubmitProofSchema>;
 export type ReviewProofInput = z.infer<typeof ReviewProofSchema>;
 export type RefundEscrowInput = z.infer<typeof RefundEscrowSchema>;
+export type CreatePaymentOrderInput = z.infer<typeof CreatePaymentOrderSchema>;
+export type VerifyRazorpayPaymentInput = z.infer<typeof VerifyRazorpayPaymentSchema>;
 

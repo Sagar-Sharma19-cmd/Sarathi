@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import { Router, type Router as ExpressRouter } from 'express';
 import { UpdateStateSchema, UpdateLanguageSchema } from '@sarathi/shared';
 import { authenticateUser, AuthRequest } from '../middleware/auth.js';
 import { validateBody } from '../middleware/validateRequest.js';
@@ -7,7 +7,7 @@ import { LoanModel } from '../models/Loan.js';
 import { getLatestScore } from '../services/scoring.js';
 import { AppError, ErrorCodes } from '../utils/errors.js';
 
-const router = Router();
+const router: ExpressRouter = Router();
 
 router.use(authenticateUser);
 
@@ -26,7 +26,7 @@ router.get('/me', async (req: AuthRequest, res, next) => {
 
     const historyEntries = (user.transactionHistory ?? [])
       .slice(-20)
-      .map(entry => entry.toObject?.() ?? entry)
+      .map((entry: any) => entry?.toObject?.() ?? entry)
       .reverse();
 
     res.json({
@@ -34,6 +34,7 @@ router.get('/me', async (req: AuthRequest, res, next) => {
         userId: user._id.toString(),
         phoneE164: user.phoneE164,
         sarathiId: user.sarathiId,
+        name: user.name,
         preferredLang: user.preferredLang,
         stateCode: user.stateCode,
         kycStatus: user.kycStatus,

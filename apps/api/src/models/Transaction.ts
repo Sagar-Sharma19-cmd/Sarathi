@@ -12,6 +12,7 @@ const transactionSchema = new Schema<TransactionDocument>(
         'remit', 
         'repay', 
         'loan_disbursal', 
+        'topup',
         'safesend_escrow', 
         'safesend_release', 
         'safesend_refund'

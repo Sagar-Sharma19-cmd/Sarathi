@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import { Router, type Router as ExpressRouter } from 'express';
 import { RemitSchema, PaginationSchema } from '@sarathi/shared';
 import { authenticateUser, AuthRequest } from '../middleware/auth.js';
 import { validateBody, validateQuery } from '../middleware/validateRequest.js';
@@ -15,7 +15,7 @@ import {
 } from '../services/finance.js';
 import { AppError, ErrorCodes } from '../utils/errors.js';
 
-const router = Router();
+const router: ExpressRouter = Router();
 
 router.use(authenticateUser);
 
